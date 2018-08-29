@@ -34,7 +34,7 @@
 }
 
 - (void)initShaderArr {
-    self.shaders = [NSArray arrayWithObjects:@(MetalTransitionShaderTypeFade),@(MetalTransitionShaderTypeFold),@(MetalTransitionShaderTypeRipple),@(MetalTransitionShaderTypeHorizontal), nil];
+    self.shaders = [NSArray arrayWithObjects:@(MetalTransitionShaderTypeFade),@(MetalTransitionShaderTypeFold),@(MetalTransitionShaderTypeRipple),@(MetalTransitionShaderTypeHorizontal),@(MetalTransitionShaderTypeWave),@(MetalTransitionShaderTypeCrosswarp),@(MetalTransitionShaderTypeRadial),@(MetalTransitionShaderTypePinwheel), nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -74,6 +74,18 @@
             break;
         case MetalTransitionShaderTypeHorizontal:
             cell.textLabel.text = @"Horizontal";
+            break;
+        case MetalTransitionShaderTypeWave:
+            cell.textLabel.text = @"Wave";
+            break;
+        case MetalTransitionShaderTypeCrosswarp:
+            cell.textLabel.text = @"Crosswarp";
+            break;
+        case MetalTransitionShaderTypeRadial:
+            cell.textLabel.text = @"Radial";
+            break;
+        case MetalTransitionShaderTypePinwheel:
+            cell.textLabel.text = @"Pinwheel";
             break;
         default:
             break;

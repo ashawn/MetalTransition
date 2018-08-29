@@ -112,6 +112,18 @@ typedef struct {
         case MetalTransitionShaderTypeHorizontal:
             fragmentProgram = [self.defaultLibrary newFunctionWithName:@"horizontal_fragment"];
             break;
+        case MetalTransitionShaderTypeWave:
+            fragmentProgram = [self.defaultLibrary newFunctionWithName:@"wave_fragment"];
+            break;
+        case MetalTransitionShaderTypeCrosswarp:
+            fragmentProgram = [self.defaultLibrary newFunctionWithName:@"crosswarp_fragment"];
+            break;
+        case MetalTransitionShaderTypeRadial:
+            fragmentProgram = [self.defaultLibrary newFunctionWithName:@"radial_fragment"];
+            break;
+        case MetalTransitionShaderTypePinwheel:
+            fragmentProgram = [self.defaultLibrary newFunctionWithName:@"pinwheel_fragment"];
+            break;
         default:
             break;
     }

@@ -20,6 +20,10 @@ typedef NS_ENUM(NSUInteger, MetalTransitionShaderType) {
     MetalTransitionShaderTypeFold,
     MetalTransitionShaderTypeRipple,
     MetalTransitionShaderTypeHorizontal,
+    MetalTransitionShaderTypeWave,
+    MetalTransitionShaderTypeCrosswarp,
+    MetalTransitionShaderTypeRadial,
+    MetalTransitionShaderTypePinwheel,
 };
 
 @interface MetalTransition : NSObject<UIViewControllerAnimatedTransitioning>
