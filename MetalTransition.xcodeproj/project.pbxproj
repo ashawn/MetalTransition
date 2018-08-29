@@ -62,6 +62,17 @@
 			path = Source;
 			sourceTree = "<group>";
 		};
+		250D6C19213691F5007BA044 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				254B97E6211EC14A00FEE0D4 /* ViewController.h */,
+				254B97E7211EC14A00FEE0D4 /* ViewController.m */,
+				254B97F9211EC18A00FEE0D4 /* SViewController.h */,
+				254B97FA211EC18A00FEE0D4 /* SViewController.m */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
 		254B97D7211EC14900FEE0D4 = {
 			isa = PBXGroup;
 			children = (
@@ -81,13 +92,10 @@
 		254B97E2211EC14900FEE0D4 /* MetalTransition */ = {
 			isa = PBXGroup;
 			children = (
+				250D6C19213691F5007BA044 /* Demo */,
 				250D6C18213687FD007BA044 /* Source */,
 				254B97E3211EC14900FEE0D4 /* AppDelegate.h */,
 				254B97E4211EC14A00FEE0D4 /* AppDelegate.m */,
-				254B97E6211EC14A00FEE0D4 /* ViewController.h */,
-				254B97E7211EC14A00FEE0D4 /* ViewController.m */,
-				254B97F9211EC18A00FEE0D4 /* SViewController.h */,
-				254B97FA211EC18A00FEE0D4 /* SViewController.m */,
 				254B97E9211EC14A00FEE0D4 /* Main.storyboard */,
 				254B97EC211EC14D00FEE0D4 /* Assets.xcassets */,
 				254B97EE211EC14D00FEE0D4 /* LaunchScreen.storyboard */,
