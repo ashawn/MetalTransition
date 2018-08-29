@@ -7,18 +7,27 @@
 //
 
 #import "SViewController.h"
-#import "MetalTransition.h"
 
 @interface SViewController ()<UINavigationControllerDelegate,UIViewControllerTransitioningDelegate>
+
+@property (nonatomic, assign) MetalTransitionShaderType shader;
 
 @end
 
 @implementation SViewController
 
+- (instancetype)initWithShader :(MetalTransitionShaderType)shader {
+    if (self = [super init]) {
+        self.shader = shader;
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     UIImageView *imageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"fightclub"]];
+    imageView.frame = self.view.bounds;
     [self.view addSubview:imageView];
     
     self.transitioningDelegate = self;
@@ -39,10 +48,10 @@
 }
 
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source{
-    return [MetalTransition transitionWithTransitionType:MetalTransitionTypePresent];
+    return [MetalTransition transitionWithTransitionType:MetalTransitionTypePresent shader:self.shader];
 }
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed{
-    return [MetalTransition transitionWithTransitionType:MetalTransitionTypeDismiss];
+    return [MetalTransition transitionWithTransitionType:MetalTransitionTypeDismiss shader:self.shader];
 }
 
 - (nullable id <UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
@@ -50,10 +59,10 @@
                                                          fromViewController:(UIViewController *)fromVC
                                                            toViewController:(UIViewController *)toVC {
     if(operation == UINavigationControllerOperationPush){
-        return [MetalTransition transitionWithTransitionType:MetalTransitionTypePush];
+        return [MetalTransition transitionWithTransitionType:MetalTransitionTypePush shader:self.shader];
     }
     else{
-        return [MetalTransition transitionWithTransitionType:MetalTransitionTypePop];
+        return [MetalTransition transitionWithTransitionType:MetalTransitionTypePop shader:self.shader];
     }
 }
 

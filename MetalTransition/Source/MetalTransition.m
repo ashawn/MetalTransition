@@ -11,14 +11,15 @@
 
 @implementation MetalTransition
 
-+ (instancetype)transitionWithTransitionType:(MetalTransitionType)type{
-    return [[self alloc] initWithTransitionType:type];
++ (instancetype)transitionWithTransitionType:(MetalTransitionType)type shader:(MetalTransitionShaderType)shader{
+    return [[self alloc] initWithTransitionType:type shader:shader];
 }
 
-- (instancetype)initWithTransitionType:(MetalTransitionType)type{
+- (instancetype)initWithTransitionType:(MetalTransitionType)type shader:(MetalTransitionShaderType)shader{
     self = [super init];
     if (self) {
         _type = type;
+        _shader = shader;
     }
     return self;
 }
@@ -65,7 +66,7 @@
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     
     UIView *containerView = [transitionContext containerView];
-    MetalView *metalView = [[MetalView alloc] initWithFrame:containerView.bounds fromImage:[self imageFromsnapshotView:fromVC.view] toImage:[self imageFromsnapshotView:toVC.view]];
+    MetalView *metalView = [[MetalView alloc] initWithFrame:containerView.bounds fromImage:[self imageFromsnapshotView:fromVC.view] toImage:[self imageFromsnapshotView:toVC.view] shader:self.shader];
     [containerView addSubview:metalView];
     
     [metalView metalViewDoAnimation:[self transitionDuration:transitionContext] completion:^(BOOL finished) {
@@ -84,7 +85,7 @@
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     
     UIView *containerView = [transitionContext containerView];
-    MetalView *metalView = [[MetalView alloc] initWithFrame:containerView.bounds fromImage:[self imageFromsnapshotView:fromVC.view] toImage:[self imageFromsnapshotView:toVC.view]];
+    MetalView *metalView = [[MetalView alloc] initWithFrame:containerView.bounds fromImage:[self imageFromsnapshotView:fromVC.view] toImage:[self imageFromsnapshotView:toVC.view] shader:self.shader];
     [containerView addSubview:metalView];
     
     [metalView metalViewDoAnimation:[self transitionDuration:transitionContext] completion:^(BOOL finished) {
@@ -103,7 +104,7 @@
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     
     UIView *containerView = [transitionContext containerView];
-    MetalView *metalView = [[MetalView alloc] initWithFrame:containerView.bounds fromImage:[self imageFromsnapshotView:fromVC.view] toImage:[self imageFromsnapshotView:toVC.view]];
+    MetalView *metalView = [[MetalView alloc] initWithFrame:containerView.bounds fromImage:[self imageFromsnapshotView:fromVC.view] toImage:[self imageFromsnapshotView:toVC.view] shader:self.shader];
     [containerView addSubview:metalView];
     
     [metalView metalViewDoAnimation:[self transitionDuration:transitionContext] completion:^(BOOL finished) {
@@ -122,7 +123,7 @@
     UIViewController *fromVC = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     
     UIView *containerView = [transitionContext containerView];
-    MetalView *metalView = [[MetalView alloc] initWithFrame:containerView.bounds fromImage:[self imageFromsnapshotView:fromVC.view] toImage:[self imageFromsnapshotView:toVC.view]];
+    MetalView *metalView = [[MetalView alloc] initWithFrame:containerView.bounds fromImage:[self imageFromsnapshotView:fromVC.view] toImage:[self imageFromsnapshotView:toVC.view] shader:self.shader];
     [containerView addSubview:metalView];
     
     [metalView metalViewDoAnimation:[self transitionDuration:transitionContext] completion:^(BOOL finished) {

@@ -10,7 +10,9 @@
 #import "SViewController.h"
 #import "MetalView.h"
 
-@interface ViewController ()
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+@property (nonatomic, strong) NSArray* shaders;
 
 @end
 
@@ -19,26 +21,82 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIImageView *imageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"fightclub"]];
-    [self.view addSubview:imageView];
-    self.view.backgroundColor = [UIColor redColor];
-    // Do any additional setup after loading the view, typically from a nib.
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewTaped:)];
-    [self.view addGestureRecognizer: tapGesture];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds];
+    tableView.backgroundView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"miao5"]];
+    tableView.delegate = self;
+    tableView.dataSource = self;
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    tableView.sectionFooterHeight = CGFLOAT_MIN;
     
-//    MVPMetalView *mvpView = [[MVPMetalView alloc] initWithFrame:self.view.bounds image:[UIImage imageNamed:@"fightclub"]];
-//    [self.view addSubview:mvpView];
+    [self.view addSubview:tableView];
+    
+    [self initShaderArr];
 }
 
-- (void)viewTaped:(UITapGestureRecognizer*)recognizer {
-    [self presentViewController:[SViewController new] animated:YES completion:nil];
+- (void)initShaderArr {
+    self.shaders = [NSArray arrayWithObjects:@(MetalTransitionShaderTypeFade),@(MetalTransitionShaderTypeFold),@(MetalTransitionShaderTypeRipple),@(MetalTransitionShaderTypeHorizontal), nil];
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - table datasouce
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    return CGFLOAT_MIN;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.shaders.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [UITableViewCell new];
+    cell.backgroundColor = [UIColor colorWithWhite:0.5 alpha:0.5];
+    switch ([self.shaders[indexPath.row] unsignedIntegerValue]) {
+        case MetalTransitionShaderTypeFade:
+            cell.textLabel.text = @"Fade";
+            break;
+        case MetalTransitionShaderTypeFold:
+            cell.textLabel.text = @"Fold";
+            break;
+        case MetalTransitionShaderTypeRipple:
+            cell.textLabel.text = @"Ripple";
+            break;
+        case MetalTransitionShaderTypeHorizontal:
+            cell.textLabel.text = @"Horizontal";
+            break;
+        default:
+            break;
+    }
+    
+    return cell;
+}
+
+
+#pragma mark - table delegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 45;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self presentViewController:[[SViewController alloc] initWithShader:[self.shaders[indexPath.row] unsignedIntegerValue]] animated:YES completion:nil];
+}
+
+- (BOOL)tableView:(UITableView*)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
 
 @end

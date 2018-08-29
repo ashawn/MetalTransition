@@ -15,11 +15,18 @@ typedef NS_ENUM(NSUInteger, MetalTransitionType) {
     MetalTransitionTypePop,
 };
 
+typedef NS_ENUM(NSUInteger, MetalTransitionShaderType) {
+    MetalTransitionShaderTypeFade = 0,
+    MetalTransitionShaderTypeFold,
+    MetalTransitionShaderTypeRipple,
+    MetalTransitionShaderTypeHorizontal,
+};
+
 @interface MetalTransition : NSObject<UIViewControllerAnimatedTransitioning>
 
 @property (nonatomic, assign) MetalTransitionType type;
+@property (nonatomic, assign) MetalTransitionShaderType shader;
 
-+ (instancetype)transitionWithTransitionType:(MetalTransitionType)type;
-- (instancetype)initWithTransitionType:(MetalTransitionType)type;
++ (instancetype)transitionWithTransitionType:(MetalTransitionType)type shader:(MetalTransitionShaderType)shader;
 
 @end

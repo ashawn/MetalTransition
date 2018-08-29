@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MetalTransition.h"
 
 @interface SViewController : UIViewController
+
+- (instancetype)initWithShader :(MetalTransitionShaderType)shader;
 
 @end

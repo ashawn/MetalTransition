@@ -7,6 +7,7 @@
 //
 
 #import "MetalView.h"
+#import "MetalTransition.h"
 
 typedef struct {
     float progress;
@@ -63,7 +64,8 @@ typedef struct {
 
 - (instancetype)initWithFrame:(CGRect)frame
                     fromImage:(UIImage *)fromImage
-                      toImage:(UIImage *)toImage{
+                      toImage:(UIImage *)toImage
+                       shader:(MetalTransitionShaderType)shader{
     self = [super initWithFrame:frame];
     if (!self) return nil;
     
@@ -77,7 +79,7 @@ typedef struct {
     };
     [self.layer insertSublayer:self.progressLayer atIndex:0];
     
-    [self setupPipeline];
+    [self setupPipeline:shader];
     
     self.fromTex = [self setupTexture:fromImage];
     self.toTex = [self setupTexture:toImage];
@@ -86,7 +88,7 @@ typedef struct {
     return self;
 }
 
-- (void)setupPipeline {
+- (void)setupPipeline:(MetalTransitionShaderType)shader {
     
     self.delegate = self;
     
@@ -96,7 +98,23 @@ typedef struct {
     
     // Fetch the vertex and fragment functions from the library
     id<MTLFunction> vertexProgram = [self.defaultLibrary newFunctionWithName:@"pass_vertex"];
-    id<MTLFunction> fragmentProgram = [self.defaultLibrary newFunctionWithName:@"fold_fragment"];
+    id<MTLFunction> fragmentProgram;
+    switch (shader) {
+        case MetalTransitionShaderTypeFade:
+            fragmentProgram = [self.defaultLibrary newFunctionWithName:@"fade_fragment"];
+            break;
+        case MetalTransitionShaderTypeFold:
+            fragmentProgram = [self.defaultLibrary newFunctionWithName:@"fold_fragment"];
+            break;
+        case MetalTransitionShaderTypeRipple:
+            fragmentProgram = [self.defaultLibrary newFunctionWithName:@"ripple_fragment"];
+            break;
+        case MetalTransitionShaderTypeHorizontal:
+            fragmentProgram = [self.defaultLibrary newFunctionWithName:@"horizontal_fragment"];
+            break;
+        default:
+            break;
+    }
     
     // Build a render pipeline descriptor with the desired functions
     MTLRenderPipelineDescriptor *pipelineStateDescriptor = [[MTLRenderPipelineDescriptor alloc] init];
