@@ -95,7 +95,7 @@ typedef struct {
     self.defaultLibrary = [self.device newDefaultLibrary];
     
     // Fetch the vertex and fragment functions from the library
-    id<MTLFunction> vertexProgram = [self.defaultLibrary newFunctionWithName:@"ripple_vertex"];
+    id<MTLFunction> vertexProgram = [self.defaultLibrary newFunctionWithName:@"pass_vertex"];
     id<MTLFunction> fragmentProgram = [self.defaultLibrary newFunctionWithName:@"ripple_fragment"];
     
     // Build a render pipeline descriptor with the desired functions

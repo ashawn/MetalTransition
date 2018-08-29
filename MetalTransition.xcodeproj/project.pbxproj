@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		250D6BF02126EF04007BA044 /* MetalView.m in Sources */ = {isa = PBXBuildFile; fileRef = 250D6BEF2126EF04007BA044 /* MetalView.m */; };
 		250D6BF22126F708007BA044 /* transition.metal in Sources */ = {isa = PBXBuildFile; fileRef = 250D6BF12126F708007BA044 /* transition.metal */; };
-		250D6C032133ED31007BA044 /* ripple.metal in Sources */ = {isa = PBXBuildFile; fileRef = 250D6C022133ED31007BA044 /* ripple.metal */; };
 		254B97E5211EC14A00FEE0D4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 254B97E4211EC14A00FEE0D4 /* AppDelegate.m */; };
 		254B97E8211EC14A00FEE0D4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 254B97E7211EC14A00FEE0D4 /* ViewController.m */; };
 		254B97EB211EC14A00FEE0D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 254B97E9211EC14A00FEE0D4 /* Main.storyboard */; };
@@ -24,7 +23,6 @@
 		250D6BEE2126EF04007BA044 /* MetalView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MetalView.h; sourceTree = "<group>"; };
 		250D6BEF2126EF04007BA044 /* MetalView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MetalView.m; sourceTree = "<group>"; };
 		250D6BF12126F708007BA044 /* transition.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = transition.metal; sourceTree = "<group>"; };
-		250D6C022133ED31007BA044 /* ripple.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = ripple.metal; sourceTree = "<group>"; };
 		254B97E0211EC14900FEE0D4 /* MetalTransition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MetalTransition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		254B97E3211EC14900FEE0D4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		254B97E4211EC14A00FEE0D4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -55,7 +53,6 @@
 		250D6C18213687FD007BA044 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				250D6C022133ED31007BA044 /* ripple.metal */,
 				254B97FC211ED25500FEE0D4 /* MetalTransition.h */,
 				254B97FD211ED25500FEE0D4 /* MetalTransition.m */,
 				250D6BEE2126EF04007BA044 /* MetalView.h */,
@@ -176,7 +173,6 @@
 				254B97F3211EC14D00FEE0D4 /* main.m in Sources */,
 				254B97FB211EC18A00FEE0D4 /* SViewController.m in Sources */,
 				250D6BF02126EF04007BA044 /* MetalView.m in Sources */,
-				250D6C032133ED31007BA044 /* ripple.metal in Sources */,
 				254B97E5211EC14A00FEE0D4 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
