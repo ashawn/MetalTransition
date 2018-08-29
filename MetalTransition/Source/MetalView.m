@@ -96,7 +96,7 @@ typedef struct {
     
     // Fetch the vertex and fragment functions from the library
     id<MTLFunction> vertexProgram = [self.defaultLibrary newFunctionWithName:@"pass_vertex"];
-    id<MTLFunction> fragmentProgram = [self.defaultLibrary newFunctionWithName:@"ripple_fragment"];
+    id<MTLFunction> fragmentProgram = [self.defaultLibrary newFunctionWithName:@"fold_fragment"];
     
     // Build a render pipeline descriptor with the desired functions
     MTLRenderPipelineDescriptor *pipelineStateDescriptor = [[MTLRenderPipelineDescriptor alloc] init];
